@@ -121,43 +121,54 @@ const Home: NextPage<GetUsersResponse> = ({ initialData }: any) => {
           </tr>
         </thead>
         <tbody>
-          {data?.users?.map((user: User) => (
-            <tr key={user._id}>
-              <td>
-                <a href='#'>
-                  <Image src={Avatar} alt='' width={25} height={25} />
-                  {user.name}
-                </a>
-              </td>
-              {user._id === idOfUserToBeEdited ? (
+          {data?.users?.length > 0 ? (
+            data?.users?.map((user: User) => (
+              <tr key={user._id}>
                 <td>
-                  <input
-                    type='email'
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                    onBlur={() => {
-                      mutation.mutate({ id: idOfUserToBeEdited, email })
-                      setIdOfUserToBeEdited('')
+                  <a href='#'>
+                    <Image
+                      loader={() => user.avatar}
+                      src={user.avatar}
+                      alt=''
+                      width={25}
+                      height={25}
+                    />
+                    {user.name}
+                  </a>
+                </td>
+                {user._id === idOfUserToBeEdited ? (
+                  <td>
+                    <input
+                      type='email'
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                      onBlur={() => {
+                        mutation.mutate({ id: idOfUserToBeEdited, email })
+                        setIdOfUserToBeEdited('')
+                      }}
+                    />
+                  </td>
+                ) : (
+                  <td
+                    onClick={() => {
+                      setEmail(user.email)
+                      setIdOfUserToBeEdited(user._id)
                     }}
-                  />
+                  >
+                    {user.email}
+                  </td>
+                )}
+                <td>{user.createdAt}</td>
+                <td>{user.updatedAt}</td>
+                <td>
+                  <a href='#'>View</a>
                 </td>
-              ) : (
-                <td
-                  onClick={() => {
-                    setEmail(user.email)
-                    setIdOfUserToBeEdited(user._id)
-                  }}
-                >
-                  {user.email}
-                </td>
-              )}
-              <td>{user.createdAt}</td>
-              <td>{user.updatedAt}</td>
-              <td>
-                <a href='#'>View</a>
-              </td>
-            </tr>
-          ))}
+                Avatar
+              </tr>
+            ))
+          ) : (
+            <p>No data found</p>
+          )}
         </tbody>
       </table>
       <div className={styles.paginationContainer}>
