@@ -12,8 +12,10 @@ import handler, { GetUsersResponse } from './api/users'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
+import mongoose from 'mongoose'
+import User from '../models/userModel'
 
-interface User {
+interface UserInterface {
   _id: string
   email: string
   name: string
@@ -34,7 +36,29 @@ const fetchUsers = async (page: number = 1, pageSize: number = 5) => {
 }
 
 export const getServerSideProps = async () => {
-  const data = await fetchUsers()
+  mongoose
+    .connect(
+      `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.cxomx.mongodb.net/pagination?retryWrites=true&w=majority`
+    )
+    .catch((error) => {
+      console.log('[ERROR: Error during connecting to DB', error)
+      return process.exit(1)
+    })
+  const pageSize = 5
+  const page = 1
+  let count = await User.count({})
+
+  const users = await User.find<UserInterface>({})
+    .limit(pageSize)
+    .skip(pageSize * (page - 1))
+
+  const data = JSON.stringify({
+    users,
+    page,
+    count,
+    pageSize,
+    pages: Math.ceil(count / pageSize),
+  })
 
   return {
     props: {
@@ -122,7 +146,7 @@ const Home: NextPage<GetUsersResponse> = ({ initialData }: any) => {
         </thead>
         <tbody>
           {data?.users?.length > 0 ? (
-            data?.users?.map((user: User) => (
+            data?.users?.map((user: UserInterface) => (
               <tr key={user._id}>
                 <td>
                   <a href='#'>
