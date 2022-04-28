@@ -26,7 +26,7 @@ export default async function handler(
 
   mongoose
     .connect(
-      'mongodb+srv://dharshan:O0X2BnxYuMT6u6WV@cluster0.cxomx.mongodb.net/pagination?retryWrites=true&w=majority'
+      `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.cxomx.mongodb.net/pagination?retryWrites=true&w=majority`
     )
     .catch((error) => {
       console.log('[ERROR: Error during connecting to DB', error)

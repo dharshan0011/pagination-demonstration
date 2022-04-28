@@ -51,7 +51,7 @@ const Home: NextPage<GetUsersResponse> = ({ initialData }: any) => {
 
   const queryClient = useQueryClient()
   const { isLoading, isError, data, error, isFetching, isPreviousData } =
-    useQuery(['users', { page }], () => fetchUsers(page, pageSize), {
+    useQuery(['users', { page, pageSize }], () => fetchUsers(page, pageSize), {
       initialData,
       keepPreviousData: true,
     })
