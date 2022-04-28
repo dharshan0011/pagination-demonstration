@@ -26,7 +26,7 @@ interface UserInterface {
 
 const fetchUsers = async (page: number = 1, pageSize: number = 5) => {
   return axios
-    .get('http://localhost:3000/api/users', {
+    .get('/api/users', {
       params: {
         page,
         pageSize,
