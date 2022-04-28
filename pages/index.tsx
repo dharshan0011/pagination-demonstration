@@ -163,7 +163,6 @@ const Home: NextPage<GetUsersResponse> = ({ initialData }: any) => {
                 <td>
                   <a href='#'>View</a>
                 </td>
-                Avatar
               </tr>
             ))
           ) : (
