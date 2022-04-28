@@ -1,116 +1,124 @@
 .container {
-  padding: 0 2rem;
+  display: block;
+  width: 80%;
+  margin: 3rem auto;
+  background-color: #ffffff;
+  border-radius: 0.2rem;
+  box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1),
+    0px 2px 4px -2px rgba(16, 24, 40, 0.06);
 }
 
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
+.infoContainer {
+  padding: 0.3rem 0.5rem;
 }
 
 .title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+  color: #101828;
 }
 
 .description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
+  font-weight: 400;
+  font-size: 14px;
+  color: #667085;
 }
 
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+.paginatedTable {
+  background-color: #ffffff;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.grid {
+.paginatedTable thead {
+  background-color: #f9fafb;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #667085;
+  text-align: left;
+}
+
+.paginatedTable tbody tr {
+  border-bottom: 1px solid #eaecf0;
+}
+
+.paginatedTable th,
+.paginatedTable td {
+  padding: 1rem;
+}
+
+.paginatedTable th {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.paginatedTable td {
+  font-size: 14px;
+  color: #667085;
+  font-weight: 400;
+}
+
+.paginatedTable input {
+  color: #101828;
+  padding: 0.3rem;
+  border: 1px solid #eaecf0;
+  display: flex;
+}
+
+.paginatedTable a {
+  color: #0d6efd;
+  display: flex;
+  align-items: center;
+}
+
+.paginationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding: 0.5rem 0.5rem;
+}
+
+.paginationInfo {
+  font-size: 14px;
+  color: #667085;
+  font-weight: 500;
+}
+
+.paginationControl {
+  background: #f9fafb;
+  border-radius: 8px;
+  margin: 0 0.3rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 14px;
+  border: 1px solid #eaecf0;
+  color: #101828;
+  display: flex;
+  cursor: pointer;
+}
+
+.paginationControl.active {
+  background: #d6d5d6;
+}
+
+.paginationNumberContainer {
+  margin: 0 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
 }
 
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+select.paginationControl {
+  border: none;
+  margin: 0 0.5rem;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+input.paginationControl {
+  width: 40px;
+  color: #101828;
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+label.paginationControlLabel {
+  font-size: 14px;
+  color: #667085;
 }
