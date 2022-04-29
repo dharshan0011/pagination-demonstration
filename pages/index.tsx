@@ -131,7 +131,7 @@ const Home: NextPage<GetUsersResponse> = ({ initialData }: any) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <div className={styles.infoContainer}>
-        <h1 className={styles.title}>Users{isFetching && '...'}</h1>
+        <h1 className={styles.title}>Users{isFetching && 'Refreshing...'}</h1>
         <p className={styles.description}>These are the user data.</p>
       </div>
       <table className={styles.paginatedTable}>
