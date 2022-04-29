@@ -122,3 +122,13 @@ label.paginationControlLabel {
   font-size: 14px;
   color: #667085;
 }
+
+@media (max-width: 991.98px) {
+  .paginationContainer {
+    justify-content: center;
+  }
+  .container {
+    width: 99%;
+    margin: 3rem 0.5rem;
+  }
+}

@@ -207,7 +207,7 @@ const Home: NextPage<GetUsersResponse> = ({ initialData }: any) => {
           >
             <LeftIcon />
           </button>
-          {pageNumbers.map((pageNumber) => pageNumber)}
+          {pageNumbers}
           <button
             className={styles.paginationControl}
             disabled={!(page < data.pages)}
@@ -226,6 +226,9 @@ const Home: NextPage<GetUsersResponse> = ({ initialData }: any) => {
           className={styles.paginationControl}
           value={pageSize}
           onChange={(e) => {
+            if (page * Number(e.target.value) > data.count) {
+              setPage(1)
+            }
             setPageSize(Number(e.target.value))
             queryClient.invalidateQueries('users')
           }}
